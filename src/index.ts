@@ -2,11 +2,18 @@ import { v4 as uuidV4 } from 'uuid';
 
 console.log(uuidV4());
 
+type Task = {
+  id: string
+  title: string
+  completed:boolean
+  createdAt: Date
+}
+
 // use <HTMLUlistelement> to speificy the element type
 const list = document.querySelector<HTMLUListElement>("#list");
 // If you want to get the element by ID you cannot use tthe above syntax - you must use the below
 // it tells you it will receive a form element 
-const form = document.getElementById("#task-form") as HTMLFormElement;
+const form = document.getElementById("task-form") as HTMLFormElement;
 const input = document.querySelector<HTMLInputElement>("#task-input");
 
 // event listener for form - take in the event object and prevent refresh.
@@ -17,12 +24,25 @@ form?.addEventListener("submit", e => {
   if (input?.value == '' || input?.value == null) return;
 
   // create a task object that stores the id, title, complete boolean, and when created.
-  const task = {
+  const newTask: Task = {
     id: uuidV4(),
     title: input.value,
     completed: false,
     createdAt: new Date(),
   }
-
-  input.value
+  // call function
+  addNewTask(newTask);
 })
+
+// create function to create a new task and turn it into a checkbox item
+function addNewTask(task: Task) {
+  // create an element, and append 
+  const item = document.createElement("li");
+  const label = document.createElement("label");
+  const checkbox = document.createElement("input");
+  checkbox.type = "checkbox";
+  checkbox.checked = task.completed;
+  label.append(checkbox, task.title);
+  item.append(label);
+  list?.append(item);
+}
