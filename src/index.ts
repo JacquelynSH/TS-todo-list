@@ -1,3 +1,4 @@
+import { json } from 'stream/consumers';
 import { v4 as uuidV4 } from 'uuid';
 
 console.log(uuidV4());
@@ -50,10 +51,16 @@ function addNewTask(task: Task) {
   // toggle completed boolean value when item is clicked
   checkbox.addEventListener('change', () => {
     task.completed = checkbox.checked;
+    saveTask();
   })
   checkbox.type = "checkbox";
   checkbox.checked = task.completed;
   label.append(checkbox, task.title);
   item.append(label);
   list?.append(item);
+}
+
+// save task to local storage 
+function saveTask() {
+  localStorage.setItem("TASKS", JSON.stringify(tasks))
 }
