@@ -16,6 +16,8 @@ const list = document.querySelector<HTMLUListElement>("#list");
 const form = document.getElementById("task-form") as HTMLFormElement;
 const input = document.querySelector<HTMLInputElement>("#task-input");
 
+const tasks: Task[] = [];
+
 // event listener for form - take in the event object and prevent refresh.
 form?.addEventListener("submit", e => {
   e.preventDefault();
@@ -30,6 +32,9 @@ form?.addEventListener("submit", e => {
     completed: false,
     createdAt: new Date(),
   }
+
+  tasks.push(newTask);
+
   // call function
   addNewTask(newTask);
   // clear the input value after submitted
@@ -42,6 +47,10 @@ function addNewTask(task: Task) {
   const item = document.createElement("li");
   const label = document.createElement("label");
   const checkbox = document.createElement("input");
+  // toggle completed boolean value when item is clicked
+  checkbox.addEventListener('change', () => {
+    task.completed = checkbox.checked;
+  })
   checkbox.type = "checkbox";
   checkbox.checked = task.completed;
   label.append(checkbox, task.title);
