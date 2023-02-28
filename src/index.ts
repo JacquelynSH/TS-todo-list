@@ -32,6 +32,8 @@ form?.addEventListener("submit", e => {
   }
   // call function
   addNewTask(newTask);
+  // clear the input value after submitted
+  input.value = '';
 })
 
 // create function to create a new task and turn it into a checkbox item
