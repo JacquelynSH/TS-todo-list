@@ -1,0 +1,37 @@
+body {
+  font-family: 'Bebas Neue', cursive;
+  display: flex;
+  justify-content: center;
+  background-color: rgb(210, 188, 220);
+}
+
+.inner-body {
+  max-width: 300px;
+}
+
+ul {
+  background-color: rgba(166, 111, 192, 1);
+  list-style-type: none;
+  border-radius: 10px;
+  display: flex;
+  flex-direction: column;
+}
+
+input {
+  border: none;
+  border-radius: 1px;
+  margin: 1px;
+}
+
+.btn {
+  background-color: rgba(225, 116, 102, 1);
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  margin: 4px 2px;
+  cursor: pointer;
+  border-radius: 16px;
+}
