@@ -12,8 +12,8 @@ const list = document.querySelector<HTMLUListElement>("#list");
 // If you want to get the element by ID you cannot use tthe above syntax - you must use the below
 // it tells you it will receive a form element 
 const form = document.getElementById("task-form") as HTMLFormElement;
+const clear = document.getElementById("clear-task") as HTMLButtonElement;
 const input = document.querySelector<HTMLInputElement>("#task-input");
-
 const tasks: Task[] = loadTasks();
 tasks.forEach(addNewTask);
 
@@ -40,6 +40,7 @@ form?.addEventListener("submit", e => {
   input.value = '';
 })
 
+
 // create function to create a new task and turn it into a checkbox item
 function addNewTask(task: Task) {
   // create an element, and append 
@@ -50,6 +51,7 @@ function addNewTask(task: Task) {
   saveTask();
   checkbox.addEventListener('change', () => {
     task.completed = checkbox.checked;
+    saveTask();
   })
   checkbox.type = "checkbox";
   checkbox.checked = task.completed;
@@ -57,6 +59,8 @@ function addNewTask(task: Task) {
   item.append(label);
   list?.append(item);
 }
+
+
 
 // save task to local storage 
 function saveTask() {
@@ -70,3 +74,26 @@ function loadTasks() {
   }
   return JSON.parse(taskJSON);
 }
+
+
+
+clear.addEventListener("click", () => {
+  const taskJSON = localStorage.getItem("TASKS");
+  
+    if (taskJSON == null) {
+      return [];
+    }
+    const parseTask = JSON.parse(taskJSON);
+    console.log("PARSED", parseTask);
+parseTask.forEach((task: Task) => {
+  if (task.completed === true){
+console.log(task.id)
+  localStorage.removeItem();
+  }
+  // localStorage.removeItem(parseTask.completed);
+  // location.reload();
+})
+})
+
+
+
