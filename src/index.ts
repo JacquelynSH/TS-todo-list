@@ -1,7 +1,5 @@
 import { v4 as uuidV4 } from 'uuid';
 
-console.log(uuidV4());
-
 type Task = {
   id: string
   title: string
@@ -16,7 +14,8 @@ const list = document.querySelector<HTMLUListElement>("#list");
 const form = document.getElementById("task-form") as HTMLFormElement;
 const input = document.querySelector<HTMLInputElement>("#task-input");
 
-const tasks: Task[] = [];
+const tasks: Task[] = loadTasks();
+tasks.forEach(addNewTask);
 
 // event listener for form - take in the event object and prevent refresh.
 form?.addEventListener("submit", e => {
@@ -48,10 +47,9 @@ function addNewTask(task: Task) {
   const label = document.createElement("label");
   const checkbox = document.createElement("input");
   // toggle completed boolean value when item is clicked
-  
+  saveTask();
   checkbox.addEventListener('change', () => {
     task.completed = checkbox.checked;
-    saveTask();
   })
   checkbox.type = "checkbox";
   checkbox.checked = task.completed;
@@ -63,4 +61,12 @@ function addNewTask(task: Task) {
 // save task to local storage 
 function saveTask() {
   localStorage.setItem("TASKS", JSON.stringify(tasks))
+}
+
+function loadTasks() {
+  const taskJSON = localStorage.getItem("TASKS");
+  if (taskJSON == null) {
+    return [];
+  }
+  return JSON.parse(taskJSON);
 }
