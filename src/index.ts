@@ -13,6 +13,7 @@ const list = document.querySelector<HTMLUListElement>("#list");
 // it tells you it will receive a form element 
 const form = document.getElementById("task-form") as HTMLFormElement;
 const clear = document.getElementById("clear-task") as HTMLButtonElement;
+const remove = document.getElementById("remove-item") as HTMLButtonElement;
 const input = document.querySelector<HTMLInputElement>("#task-input");
 const tasks: Task[] = loadTasks();
 tasks.forEach(addNewTask);
@@ -75,25 +76,16 @@ function loadTasks() {
   return JSON.parse(taskJSON);
 }
 
-
-
 clear.addEventListener("click", () => {
-  const taskJSON = localStorage.getItem("TASKS");
-  
-    if (taskJSON == null) {
-      return [];
-    }
-    const parseTask = JSON.parse(taskJSON);
-    console.log("PARSED", parseTask);
-parseTask.forEach((task: Task) => {
-  if (task.completed === true){
-console.log(task.id)
-  localStorage.removeItem();
-  }
-  // localStorage.removeItem(parseTask.completed);
-  // location.reload();
-})
-})
+  localStorage.clear();
+  location.reload();
+});
 
+remove.addEventListener("click", () => {
+  const completedTask = tasks.filter(task => task.completed == false);
+  localStorage.setItem("TASKS", JSON.stringify(completedTask));
+  loadTasks();
+  location.reload();
+});
 
 
