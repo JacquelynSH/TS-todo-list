@@ -5,7 +5,8 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <script src="dist/index.js" type="module"></script>
-  <!-- <link rel="stylesheet" href="index.css"> -->
+  <link rel="stylesheet" href="./css/main.min.css">
+  <link rel="stylesheet" href="index.css">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Mulish&family=Playfair+Display&family=Smokum&display=swap" rel="stylesheet">
@@ -14,13 +15,17 @@
 </head>
 <body>
   <div class="container">
-    <ul id='list' class="list-group"></ul>
-    <form id="task-form">
-      <input type="text" id="task-input">
-      <button class="btn" type="submit">Add Task</button>
-    </form>
-    <button id='clear-task' class="btn">Clear List</button>
-    <button id='remove-item' class="btn">Remove Item</button>
+    <div class="col">
+      <ul id='list' class="list-group"></ul>
+      <form id="task-form">
+        <input type="text" id="task-input">
+        <button class="btn btn-primary" type="submit">Add Task</button>
+      </form>
+      <div class="col">
+        <button id='clear-task' class="btn btn-primary">Clear List</button>
+        <button id='remove-item' class="btn btn-primary">Remove Item</button>
+      </div>
+    </div>
   </div>
   </body>
 </html>

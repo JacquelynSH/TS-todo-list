@@ -1,11 +1,14 @@
 body {
-  font-family: 'Bebas Neue', cursive;
-  display: flex;
+  font-family: 'Bebas Neue', cursive !important;
+  color: purple;
+  /* display: flex;
   justify-content: center;
-  background-color: rgb(210, 188, 220);
+  background-color: rgb(210, 188, 220); */
 }
 
-.inner-body {
+
+
+/* .inner-body {
   max-width: 300px;
 }
 
@@ -34,4 +37,4 @@ input {
   margin: 4px 2px;
   cursor: pointer;
   border-radius: 16px;
-}
+} */
