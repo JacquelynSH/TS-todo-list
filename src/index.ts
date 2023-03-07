@@ -46,6 +46,7 @@ form?.addEventListener("submit", e => {
 function addNewTask(task: Task) {
   // create an element, and append 
   const item = document.createElement("li");
+  item.className = 'list-group-item';
   const label = document.createElement("label");
   const checkbox = document.createElement("input");
   // toggle completed boolean value when item is clicked
