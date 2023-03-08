@@ -7,6 +7,12 @@ body {
 
 .inner-body {
   max-width: 300px;
+  background-color: blueviolet;
+  border-radius: 15px;
+  padding-top: 30px;
+  padding-bottom: 30px;
+  padding-right: 15px;
+  padding-left: 15px;
 }
 
 ul {
@@ -15,7 +21,9 @@ ul {
   border-radius: 10px;
   display: flex;
   flex-direction: column;
+  margin-top: 5px;
 }
+
 
 input {
   border: none;
@@ -25,6 +33,7 @@ input {
 
 .btn {
   background-color: rgba(225, 116, 102, 1);
+  
   color: white;
   border: none;
   padding: 10px 20px;
@@ -34,4 +43,42 @@ input {
   margin: 4px 2px;
   cursor: pointer;
   border-radius: 16px;
+  font-family: 'Bebas Neue', cursive;
+}
+
+.list-container {
+  box-sizing: 1px;
+  border-color: black;
+}
+
+li {
+  padding-top: 5px;
+  padding-bottom: 5px;
+}
+
+.buttons {
+
+}
+
+#clear-task {
+width: 110px;
+}
+#remove-item {
+  width: 110px;
+}
+
+#task-input {
+  background-color: peachpuff;
+  height: 30px;
+  border-radius: 15px;
+}
+
+.checkmark {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 25px;
+  width: 25px;
+  background-color: #eee;
+  border-radius: 50%;
 }
