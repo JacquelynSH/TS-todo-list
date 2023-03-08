@@ -29,6 +29,8 @@ input {
   border: none;
   border-radius: 1px;
   margin: 1px;
+  font-family: 'Bebas Neue', cursive;
+  
 }
 
 .btn {
@@ -71,14 +73,9 @@ width: 110px;
   background-color: peachpuff;
   height: 30px;
   border-radius: 15px;
+  font-family: ;
 }
 
-.checkmark {
-  position: absolute;
-  top: 0;
-  left: 0;
-  height: 25px;
-  width: 25px;
-  background-color: #eee;
-  border-radius: 50%;
+.checkbox {
+
 }

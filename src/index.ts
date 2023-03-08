@@ -48,6 +48,7 @@ function addNewTask(task: Task) {
   const item = document.createElement("li");
   const label = document.createElement("label");
   const checkbox = document.createElement("input");
+  checkbox.className = "checkbox";
   // toggle completed boolean value when item is clicked
   saveTask();
   checkbox.addEventListener('change', () => {
