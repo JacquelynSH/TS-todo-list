@@ -7,6 +7,20 @@ type Task = {
   createdAt: Date
 }
 
+type Title = {
+  id: string
+  title: string
+}
+
+/*
+    if no list - display #create-new-list-btn
+      on button click display #list-title-input and #create-list-name-btn
+    user types in name and on button 
+    submit the below pops up and you can creat a list with the title at the top
+
+*/
+
+
 // use <HTMLUlistelement> to speificy the element type
 const list = document.querySelector<HTMLUListElement>("#list");
 // If you want to get the element by ID you cannot use tthe above syntax - you must use the below
@@ -15,8 +29,55 @@ const form = document.getElementById("task-form") as HTMLFormElement;
 const clear = document.getElementById("clear-task") as HTMLButtonElement;
 const remove = document.getElementById("remove-item") as HTMLButtonElement;
 const input = document.querySelector<HTMLInputElement>("#task-input");
+const titleForm = document.getElementById('title-form') as HTMLFormElement;
+const title = document.querySelector<HTMLInputElement>("#list-title-input");
+
+
+/////////////////// CREATE TITLE ////////////////////
+
+const newTitle: Title[] = loadTitle();
+newTitle.forEach(addListTitle)
+
+
+titleForm?.addEventListener("submit", e => {
+  e.preventDefault();
+  if (title?.value == '' || title?.value == null) return;
+  
+  const listTitle: Title = {
+    id: uuidV4(),
+    title: title.value
+  }
+
+  newTitle.push(listTitle)
+
+  addListTitle(listTitle);
+  
+})
+
+function addListTitle(title: Title) {
+  const listTitle = document.createElement("h3");
+  saveListTitle();
+  listTitle.append(title.title)
+  console.log(newTitle)
+}
+
+function saveListTitle() {
+  localStorage.setItem("TITLE", JSON.stringify(newTitle))
+}
+
+function loadTitle() {
+  const titleJSON = localStorage.getItem("TITLE");
+  if (titleJSON == null) {
+    return [];
+  }
+  return JSON.parse(titleJSON);
+
+}
+
+////////////////////// CREATE TASK ////////////////////
+
 const tasks: Task[] = loadTasks();
-tasks.forEach(addNewTask);
+tasks.forEach(addNewTask); 
 
 // event listener for form - take in the event object and prevent refresh.
 form?.addEventListener("submit", e => {
@@ -61,6 +122,7 @@ function addNewTask(task: Task) {
   item.append(label);
   list?.append(item);
 }
+
 
 
 

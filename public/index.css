@@ -67,8 +67,12 @@ width: 110px;
 }
 
 input {
-  background-color: peachpuff;
-  height: 30px;
-  border-radius: 15px;
+  background-color: transparent;
+  margin: 8px 0;
+  box-sizing: border-box;
+  border: none;
+  border-bottom: 2px solid #009688;
   font-family: 'Bebas Neue', cursive;
 }
+
+
