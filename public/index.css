@@ -58,9 +58,6 @@ li {
   padding-bottom: 5px;
 }
 
-.buttons {
-
-}
 
 #clear-task {
 width: 110px;
@@ -69,13 +66,9 @@ width: 110px;
   width: 110px;
 }
 
-#task-input {
+input {
   background-color: peachpuff;
   height: 30px;
   border-radius: 15px;
-  font-family: ;
-}
-
-.checkbox {
-
+  font-family: 'Bebas Neue', cursive;
 }
