@@ -13,10 +13,17 @@
 </head>
 <body>
   <div class="inner-body">
+    <h1 id="title"></h1>
       <form id="title-form">
         <input id="list-title-input" type="text">
       </form>
-  
+  <script>
+    let title = document.querySelector('#title');
+    const newTitle = localStorage.getItem('TITLE')
+    parseTitle = JSON.parse(newTitle);
+    let listName = parseTitle[0].title
+    title.innerHTML = `${listName}`;
+  </script>
 
       <ul id='list'></ul>
       <form id="task-form">

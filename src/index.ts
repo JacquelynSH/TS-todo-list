@@ -31,12 +31,13 @@ const remove = document.getElementById("remove-item") as HTMLButtonElement;
 const input = document.querySelector<HTMLInputElement>("#task-input");
 const titleForm = document.getElementById('title-form') as HTMLFormElement;
 const title = document.querySelector<HTMLInputElement>("#list-title-input");
+const h1 = document.querySelector('name');
+
 
 
 /////////////////// CREATE TITLE ////////////////////
 
 const newTitle: Title[] = loadTitle();
-newTitle.forEach(addListTitle)
 
 
 titleForm?.addEventListener("submit", e => {
@@ -49,13 +50,12 @@ titleForm?.addEventListener("submit", e => {
   }
 
   newTitle.push(listTitle)
-
   addListTitle(listTitle);
   
 })
 
 function addListTitle(title: Title) {
-  const listTitle = document.createElement("h3");
+  const listTitle = document.createElement("h1");
   saveListTitle();
   listTitle.append(title.title)
   console.log(newTitle)
@@ -71,8 +71,9 @@ function loadTitle() {
     return [];
   }
   return JSON.parse(titleJSON);
-
 }
+
+
 
 ////////////////////// CREATE TASK ////////////////////
 
