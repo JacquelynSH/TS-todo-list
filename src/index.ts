@@ -23,21 +23,20 @@ type Title = {
 
 // use <HTMLUlistelement> to speificy the element type
 const list = document.querySelector<HTMLUListElement>("#list");
-// If you want to get the element by ID you cannot use tthe above syntax - you must use the below
-// it tells you it will receive a form element 
 const form = document.getElementById("task-form") as HTMLFormElement;
 const clear = document.getElementById("clear-task") as HTMLButtonElement;
 const remove = document.getElementById("remove-item") as HTMLButtonElement;
 const input = document.querySelector<HTMLInputElement>("#task-input");
 const titleForm = document.getElementById('title-form') as HTMLFormElement;
 const title = document.querySelector<HTMLInputElement>("#list-title-input");
-const h1 = document.querySelector('name');
+
 
 
 
 /////////////////// CREATE TITLE ////////////////////
 
 const newTitle: Title[] = loadTitle();
+
 
 
 titleForm?.addEventListener("submit", e => {
@@ -51,7 +50,7 @@ titleForm?.addEventListener("submit", e => {
 
   newTitle.push(listTitle)
   addListTitle(listTitle);
-  
+  title.value = "";
 })
 
 function addListTitle(title: Title) {
@@ -66,12 +65,27 @@ function saveListTitle() {
 }
 
 function loadTitle() {
+
   const titleJSON = localStorage.getItem("TITLE");
   if (titleJSON == null) {
     return [];
   }
   return JSON.parse(titleJSON);
 }
+
+titleForm.addEventListener('submit', e => {
+  e.preventDefault();
+  let title = document.querySelector("#title")!;
+  const titleJSON = localStorage.getItem("TITLE");
+  if (titleJSON == null) {
+    return [];
+  }
+  const  parseTitle = JSON.parse(titleJSON);
+  let listName = parseTitle[0].title
+  title.innerHTML = `${listName}`;
+  return JSON.parse(titleJSON);
+})
+
 
 
 
